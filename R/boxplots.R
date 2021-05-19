@@ -18,7 +18,7 @@ make_boxplot <- function(col_name, index) {
     guides(fill = FALSE) +
     labs(x = NULL, y = NULL, tag = paste0("(", letters[index], ")")) +
     colorblindr::scale_fill_OkabeIto() +
-    theme_minimal(base_size = 8, base_family = "Karla", base_line_size = 8/40, base_rect_size = 8/40) +
+    theme_minimal(base_size = 8, base_family = main_font, base_line_size = 8/40, base_rect_size = 8/40) +
     # theme(axis.text = element_text(color = "black")) +
     theme(panel.grid.major.x = element_blank()) +
     theme(panel.grid.minor.y = element_blank()) +
@@ -62,7 +62,7 @@ p_gender <- ggplot(df_gender, aes(y = fct_rev(community_label), x = sex_rel*100,
              filter(community == levels(community)[[1]], TSCHQ_q02_sex == "f") %>% 
              pluck("sex_rel", 1) * 100/2,
            y = nlevels(df_gender$community) + 0.75, 
-           label = "female", family = "Karla", size = 8/.pt,
+           label = "female", family = main_font, size = 8/.pt,
            color = colors["female"]) +
   annotate("text", 
            x = df_gender %>% 
@@ -70,7 +70,7 @@ p_gender <- ggplot(df_gender, aes(y = fct_rev(community_label), x = sex_rel*100,
              summarize(100*(sex_rel[1] + 0.5 * sex_rel[2])) %>%
              pluck(1, 1),
            y = nlevels(df_gender$community) + 0.75, 
-           label = "male", family = "Karla", size = 8/.pt,
+           label = "male", family = main_font, size = 8/.pt,
            color = colors["male"]) +
   annotate("segment", x = 0, xend = 0, y = 0.5, yend = 0.5 + nlevels(df_gender$community)) +
   annotate("segment", 
@@ -79,7 +79,7 @@ p_gender <- ggplot(df_gender, aes(y = fct_rev(community_label), x = sex_rel*100,
            y = 0.45, yend = 0.5 + nlevels(df_gender$community),
            color = "gray30", linetype = "dashed", size = 0.4) +
   labs(x = "Proportion (%)", y = NULL, tag = "(a)") +
-  theme_minimal(base_size = 8, base_family = "Karla", base_line_size = 8/40, base_rect_size = 8/40) +
+  theme_minimal(base_size = 8, base_family = main_font, base_line_size = 8/40, base_rect_size = 8/40) +
   theme(panel.grid = element_blank()) +
   theme(plot.margin = margin(l = 0, unit = "mm"))
 p_gender
